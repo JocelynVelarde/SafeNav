@@ -1,5 +1,5 @@
 import openai
-api_key = openai.api_key = "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"
+api_key = openai.api_key = "API_KEY"
  
 import time
 from openai import OpenAI
