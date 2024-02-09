@@ -11,7 +11,7 @@ client = OpenAI(
 
 # step1: upload file 
 file = client.files.create(
-    file = open("dataa.txt", "rb"), 
+    file = open("data.csv", "rb"), 
     purpose = 'assistants'
 )
 

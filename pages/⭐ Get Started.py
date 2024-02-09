@@ -1,18 +1,18 @@
 import streamlit as st
 
-st.title("Welcome to My Streamlit App")
+st.title("Welcome to SafeNav! 🚀")
 
-st.header("Introduction")
-st.write("This is a simple Streamlit app to get you started.")
+st.header("Waze's Safety Upgrade")
+st.write("Do you often feel unsafe when going home? Want to know the most optimal safe route to get there?.")
 
-st.write("Here, you can add your content, such as text, images, charts, etc.")
+st.write("Then, SafeNav is the answer for you! Just easily type or speak your desired initial point and final destination point, and we will provide you with the safest route to get there.")
 
-user_input = st.text_input("Enter your name", "")
+st.subheader("It is this easy to view your route on an interactive map with understandable instructions.")
 
-if user_input:
-    st.write(f"Hello, {user_input}!")
+st.divider()
 
-st.image("assets/images/test.jpg", caption="Example Image", use_column_width=True)
+st.page_link("pages\🔍Search route.py", label="Search Route", icon="🔍")
 
 
-st.write("Thank you for using my Streamlit app!")
+
+st.write("Thank you for choosing SafeNav!")
