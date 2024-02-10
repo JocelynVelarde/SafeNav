@@ -24,7 +24,7 @@ if text:
 container = st.container(border=True)
 for text in state.text_received:
     container.text(text)
-    print(text + "< - Saved to file")
+    print(text + " < - Saved to file")
     with open('text.txt', 'w') as f:
         f.write(text)
 
