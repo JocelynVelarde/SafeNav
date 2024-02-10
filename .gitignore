@@ -1,4 +1,6 @@
 api_keys.py
+.streamlit/secrets.toml
+.streamlit/gcloud.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
