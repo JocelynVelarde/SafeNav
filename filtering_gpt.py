@@ -9,7 +9,7 @@ print(prompt)
 
 openai.api_key = OPENAI_API_KEY
 
-# Creation of assistant with file retrieval
+'''# Creation of assistant with file retrieval
 file = openai.files.create(
   file=open("assets/files/input_gpt.txt", "rb"),
   purpose='assistants'
@@ -40,11 +40,11 @@ messages = openai.beta.threads.messages.list(
   thread_id=thread.id
 )
 
-print(messages)
+print(messages)'''
 
 
 # Easy way to test the model
-'''response = openai.chat.completions.create(
+response = openai.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
     {"role": "system", "content": "You are going to be given a natural language prompt with a desired initial place and final destination place. Your job is to search in a .pdf file this names and provide as a result the corresponding index number of the places in the format (#, #)"},
@@ -52,6 +52,6 @@ print(messages)
   ]
 )
 
-print(response.choices[0].message.content)'''
+print(response.choices[0].message.content)
 
 
