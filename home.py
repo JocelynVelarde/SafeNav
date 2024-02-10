@@ -6,7 +6,6 @@ st.title("Welcome to SafeNav! 🚀")
 
 st.divider()
 
-
 st.header("🛡️Waze's Safety Upgrade🛡️")
 st.write("Do you often feel unsafe when going home? Want to know the most optimal safe route to get there?.")
 
@@ -23,7 +22,7 @@ container.map(df)
 
 st.divider()
 
-#st.page_link("pages\⭐ Get Started.py", label="Click this button to Get Started", icon="🚀")
+#st.page_link("pages\get_started.py", label="Click this button to Get Started", icon="🚀")
 
 st.divider()
 
