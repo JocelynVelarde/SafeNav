@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_mic_recorder import mic_recorder, speech_to_text
+from streamlit_mic_recorder import speech_to_text
 
 state = st.session_state
 
