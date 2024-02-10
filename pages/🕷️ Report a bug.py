@@ -1,7 +1,9 @@
 import streamlit as st
 
 def bug_report():
-    st.title("Bug Reporting")
+    st.title("Bug Reporting 🕷️")
+
+    st.divider()
 
     st.write(
         "If you encountered a bug while using our app, please provide details "
@@ -16,5 +18,10 @@ def bug_report():
     if st.button("Submit Bug Report"):
         st.success("Bug report submitted successfully! Thank you for your feedback.")
 
+
 if __name__ == "__main__":
     bug_report()
+
+st.divider()
+
+st.write("Thank you for choosing SafeNav!")
