@@ -1,4 +1,4 @@
-from Api.api_keys import OPENAI_API_KEY
+from api.api_keys import OPENAI_API_KEY
 from pages.route import getText
 
 import openai
