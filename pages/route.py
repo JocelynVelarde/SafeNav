@@ -22,8 +22,10 @@ if text:
 
 for text in state.text_received:
     st.text(text)
+    print(text + "< - Saved to file")
+    with open('text.txt', 'w') as f:
+        f.write(text)
 
-def getText():
-    return text
+
 
 
