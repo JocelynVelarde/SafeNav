@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Welcome to SafeNav! 🚀")
+st.title("Get Started with our platform! 💡")
 
 st.header("Waze's Safety Upgrade")
 st.write("Do you often feel unsafe when going home? Want to know the most optimal safe route to get there?.")
