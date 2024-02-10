@@ -23,7 +23,7 @@ container.map(df)
 
 st.divider()
 
-st.page_link("pages\⭐ Get Started.py", label="Click this button to Get Started", icon="🚀")
+#st.page_link("pages\⭐ Get Started.py", label="Click this button to Get Started", icon="🚀")
 
 st.divider()
 
