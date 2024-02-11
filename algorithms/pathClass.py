@@ -11,7 +11,7 @@ class pathfinder:
 
         emptyGraph = []
 
-        with open('C:/Users/Diego/PycharmProjects/SafeNav/assets/files/Adjacency_Matrix') as f:
+        with open('assets/files/Adjacency_Matrix') as f:
             lines = f.read().splitlines()
             for line in lines:
                 emptyGraph.append(list(map(int, line.split(','))))
