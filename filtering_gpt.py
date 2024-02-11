@@ -18,7 +18,7 @@ def ask_gpt(prompt):
         # Assistant initialization
         myAssist = set_api_key().beta.assistants.retrieve(ASSISTANT_ID)
         assistant_id = myAssist.id
-        print(assistant_id)
+        print("Assistant initialized")
 
         # Assistant interaction with new message thread
         message = set_api_key().beta.threads.messages.create(
@@ -41,6 +41,7 @@ def ask_gpt(prompt):
  
             if(run.status == "completed"):
                 complete = True
+                print("Run completed")
             else:
                 time.sleep(5)
  
