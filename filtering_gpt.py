@@ -1,20 +1,19 @@
 from api_keys import OPENAI_API_KEY
+from openai import OpenAI
 from gsheet_auth import gsheet_auth
 import openai
+import time
 
-client = gsheet_auth()
-sheet = client.open('Streamlit SafeNav').worksheet('Hoja 1')
+auth = gsheet_auth()
+sheet = auth.open('Streamlit SafeNav').worksheet('Hoja 1')
 
 prompt = sheet.acell('A1').value
 print(prompt)
 
-'''with open('text.txt', 'r') as f:
-    prompt = f.read()
-
-print(prompt)'''
-
-
-'''openai.api_key = OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY)
+myAssist = client.beta.assistants.retrieve("asst_Mzkk7scg3aRzRVx8EFfzAmnr")
+assistand_id = myAssist.id
+print(assistand_id)
 
 # Creation of assistant with file retrieval
 file = openai.files.create(
@@ -38,16 +37,13 @@ message = openai.beta.threads.messages.create(
     content=prompt
 )
 
-run = openai.beta.threads.runs.create(
-  thread_id=thread.id,
-  assistant_id=assistant.id,
-)
+
 
 messages = openai.beta.threads.messages.list(
   thread_id=thread.id
 )
 
-print(messages)'''
+print(messages)
 
 
 '''# Easy way to test the model
