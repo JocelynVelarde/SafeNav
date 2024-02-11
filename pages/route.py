@@ -2,8 +2,7 @@ import streamlit as st
 from streamlit_mic_recorder import speech_to_text
 from google.oauth2.service_account import Credentials
 from gsheet_auth import gsheet_auth
-
-
+from filtering_gpt import ask_gpt
 
 client = gsheet_auth()
 sheet = client.open('Streamlit SafeNav').worksheet('Hoja 1')
@@ -25,25 +24,21 @@ st.text_input(
 text = speech_to_text(
     language='es', use_container_width=True, just_once=True, key='STT')
 
-if text:
-    state.text_received.append(text)
-
 container = st.container(border=True)
 
-# Reminder to always read cell A1, which is where the last text is stored
-for text in state.text_received:
+if text:
+    state.text_received.append(text)
     container.text(text)
-    print(text + " < - Saved to file")
-    with open('text.txt', 'w') as f:
-        f.write(text)
-        row = [[text]]
-        sheet.insert_cols(row, 1)
+
             
-st.button("Search Route", use_container_width=True)
-
+if st.button("Search Route", use_container_width=True):
+    st.info("Calculating the safest route... 🚗🔍")
+    prompt = state.text_received[-1]
+    response = ask_gpt(prompt)
+    st.write(response)
+    sheet.append_row([prompt, response])
+    
 st.divider()
-
-
 
 st.page_link("pages/🕷️ Report a bug.py", label="Click this button to Report a bug", icon="🕷️")
 

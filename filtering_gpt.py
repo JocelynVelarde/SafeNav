@@ -1,36 +1,40 @@
-from api_keys import OPENAI_API_KEY
+from api_keys import OPENAI_API_KEY, ASSISTANT_ID
 from openai import OpenAI
 from gsheet_auth import gsheet_auth
-import openai
 import time
 
+# Data retrieval from Google Sheets
 auth = gsheet_auth()
 sheet = auth.open('Streamlit SafeNav').worksheet('Hoja 1')
-prompt = sheet.acell('A1').value
-print(prompt)
+#prompt = sheet.acell('A1').value
+#print(prompt)
 
-client = OpenAI(api_key=OPENAI_API_KEY)
-myAssist = client.beta.assistants.retrieve("asst_Mzkk7scg3aRzRVx8EFfzAmnr")
-assistant_id = myAssist.id
-print(assistant_id)
+def set_api_key():
+  client = OpenAI(api_key=OPENAI_API_KEY)
+  return client
 
 def ask_gpt(prompt):
     try:
+        # Assistant initialization
+        myAssist = set_api_key().beta.assistants.retrieve(ASSISTANT_ID)
+        assistant_id = myAssist.id
+        print(assistant_id)
 
-        message = client.beta.threads.messages.create(
+        # Assistant interaction with new message thread
+        message = set_api_key().beta.threads.messages.create(
             thread_id=thread.id,
             role="user",
-            content=user_input
+            content=prompt
         )
 
-        run = client.beta.threads.runs.create(
+        run = set_api_key().beta.threads.runs.create(
             thread_id=thread.id,
             assistant_id=assistant_id
         )
 
         complete = False
         while(not complete):
-            run = client.beta.threads.runs.retrieve(
+            run = set_api_key().beta.threads.runs.retrieve(
                 thread_id=thread.id,
                 run_id=run.id
             )
@@ -40,26 +44,21 @@ def ask_gpt(prompt):
             else:
                 time.sleep(5)
  
-        messages = client.beta.threads.messages.list(
+        messages = set_api_key().beta.threads.messages.list(
             thread_id=thread.id
         )
-        return messages.data[0].content[0].text.value
+        response = messages.data[0].content[0].text.value
+        print(response)
+        return response
  
     except Exception as e:
         return f"An error occurred: {str(e)}"
  
 
-thread = client.beta.threads.create() 
+thread = set_api_key().beta.threads.create() 
 
-print("Welcome! You can start chatting with the GPT Assistant. Type 'exit' to end the conversation.")
-while True:
-    user_input = input("You: ")
-    if user_input.lower() == 'exit':
-        print("Exiting the conversation.")
-        break
-    else:
-        response = ask_gpt(user_input)
-        print(f"GPT Assistant: {response}")
+
+
 
 
 
