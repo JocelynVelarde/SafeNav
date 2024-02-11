@@ -5,7 +5,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 creds = {
-    'type': st.secrets.type,
+    'type': st.secrets["connections.gsheets"]["type"],
     'project_id': os.environ['project_id'],
     'private_key_id': os.environ['private_key_id'],
     'private_key': os.environ['private_key'],
