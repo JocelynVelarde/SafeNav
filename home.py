@@ -21,7 +21,7 @@ container.map(df)
 
 st.divider()
 
-#st.page_link("pages\get_started.py", label="Click this button to Get Started", icon="🚀")
+st.page_link("pages\get_started.py", label="Click this button to Get Started", icon="🚀")
 
 st.divider()
 
