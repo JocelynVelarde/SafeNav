@@ -4,7 +4,7 @@ import numpy as np
 from streamlit_gsheets import GSheetsConnection
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-df = conn.read(spreadsheet="https://docs.google.com/spreadsheets/d/1APxXH_fy2zPxlyb-PUA-yrk857JGCRK-OWH8ASWZv9I/edit#gid=0")
+df = conn.read()
 st.title("Welcome to SafeNav! 🚀")
 
 st.divider()
