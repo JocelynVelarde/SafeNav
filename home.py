@@ -1,16 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from streamlit_gsheets import GSheetsConnection
 
-conn = st.connection("gsheets", type=GSheetsConnection)
-df = conn.read()
 st.title("Welcome to SafeNav! 🚀")
-
 st.divider()
-
-for row in df:
-    st.write(row)
 
 st.header("🛡️Waze's Safety Upgrade🛡️")
 st.write("Do you often feel unsafe when going home? Want to know the most optimal safe route to get there?.")

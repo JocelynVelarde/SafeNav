@@ -1,5 +1,16 @@
 import streamlit as st
 from streamlit_mic_recorder import speech_to_text
+import gspread
+from google.oauth2.service_account import Credentials
+
+scope = ['https://spreadsheets.google.com/feeds',
+         'https://www.googleapis.com/auth/drive']
+
+creds = Credentials.from_service_account_file('.streamlit\gcloud.json', scopes=scope)
+
+client = gspread.authorize(creds)
+
+sheet = client.open('Streamlit SafeNav').worksheet('Hoja 1')
 
 state = st.session_state
 
@@ -22,11 +33,15 @@ if text:
     state.text_received.append(text)
 
 container = st.container(border=True)
+
+# Reminder to always read cell A1, which is where the last text is stored
 for text in state.text_received:
     container.text(text)
     print(text + " < - Saved to file")
     with open('text.txt', 'w') as f:
         f.write(text)
+        row = [[text]]
+        sheet.insert_cols(row, 1)
 
 st.button("Search Route", use_container_width=True)
 
