@@ -1,29 +1,11 @@
 import streamlit as st
-import os
 from streamlit_mic_recorder import speech_to_text
-import gspread
 from google.oauth2.service_account import Credentials
+from gsheet_auth import gsheet_auth
 
-creds = {
-    'type': st.secrets["type"],
-    'project_id': st.secrets["project_id"],
-    'private_key_id': st.secrets["private_key_id"],
-    'private_key': st.secrets["private_key"].replace('\\n', '\n'),
-    'client_email': st.secrets["client_email"],
-    'client_id': st.secrets["client_id"],
-    'auth_uri': st.secrets["auth_uri"],
-    'token_uri': st.secrets["token_uri"],
-    'auth_provider_x509_cert_url': st.secrets["auth_provider_x509_cert_url"],
-    'client_x509_cert_url': st.secrets["client_x509_cert_url"]
-}
 
-scope = ['https://spreadsheets.google.com/feeds',
-         'https://www.googleapis.com/auth/drive']
 
-creds = Credentials.from_service_account_info(creds, scopes=scope)
-
-client = gspread.authorize(creds)
-
+client = gsheet_auth()
 sheet = client.open('Streamlit SafeNav').worksheet('Hoja 1')
 
 state = st.session_state
@@ -56,10 +38,11 @@ for text in state.text_received:
         f.write(text)
         row = [[text]]
         sheet.insert_cols(row, 1)
-
+            
 st.button("Search Route", use_container_width=True)
 
 st.divider()
+
 
 
 st.page_link("pages/🕷️ Report a bug.py", label="Click this button to Report a bug", icon="🕷️")
@@ -67,6 +50,8 @@ st.page_link("pages/🕷️ Report a bug.py", label="Click this button to Report
 st.divider()
 
 st.write("Thank you for choosing SafeNav!")
+
+
 
 
 

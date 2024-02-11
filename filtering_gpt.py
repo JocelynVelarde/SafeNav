@@ -1,15 +1,22 @@
 from api_keys import OPENAI_API_KEY
+from gsheet_auth import gsheet_auth
 import openai
 
-with open('text.txt', 'r') as f:
-    prompt = f.read()
+client = gsheet_auth()
+sheet = client.open('Streamlit SafeNav').worksheet('Hoja 1')
 
+prompt = sheet.acell('A1').value
 print(prompt)
 
+'''with open('text.txt', 'r') as f:
+    prompt = f.read()
 
-openai.api_key = OPENAI_API_KEY
+print(prompt)'''
 
-'''# Creation of assistant with file retrieval
+
+'''openai.api_key = OPENAI_API_KEY
+
+# Creation of assistant with file retrieval
 file = openai.files.create(
   file=open("assets/files/input_gpt.txt", "rb"),
   purpose='assistants'
@@ -43,7 +50,7 @@ messages = openai.beta.threads.messages.list(
 print(messages)'''
 
 
-# Easy way to test the model
+'''# Easy way to test the model
 response = openai.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
@@ -52,6 +59,6 @@ response = openai.chat.completions.create(
   ]
 )
 
-print(response.choices[0].message.content)
+print(response.choices[0].message.content)'''
 
 
