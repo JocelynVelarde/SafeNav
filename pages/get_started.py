@@ -21,7 +21,7 @@ container.write("I want to go from Churubusco to Coapa but I do not know how, co
 
 st.divider()
 
-#st.page_link("pages/route.py", label="Click this button to Search Route", icon="🔍")
+st.page_link("pages/route.py", label="Click this button to Search Route", icon="🔍")
 
 st.divider()
 

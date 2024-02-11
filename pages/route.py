@@ -62,7 +62,7 @@ st.button("Search Route", use_container_width=True)
 st.divider()
 
 
-#st.page_link("pages/🕷️ Report a bug.py", label="Click this button to Report a bug", icon="🕷️")
+st.page_link("pages/🕷️ Report a bug.py", label="Click this button to Report a bug", icon="🕷️")
 
 st.divider()
 
