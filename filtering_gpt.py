@@ -1,6 +1,6 @@
-from api_keys import OPENAI_API_KEY, ASSISTANT_ID
+#from api_keys import OPENAI_API_KEY, ASSISTANT_ID
 from openai import OpenAI
-from gsheet_auth import gsheet_auth
+from gsheet_auth import gsheet_auth, OPENAI_API_KEY, ASSISTANT_ID
 import time
 
 # Data retrieval from Google Sheets
