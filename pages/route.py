@@ -43,7 +43,8 @@ if st.button("Search Route", use_container_width=True):
         prompt = state.text_received[-1]
         response = ask_gpt(prompt)
         st.write(response)
-        searchRoute.gptDecoder(response)
+        routeFound = searchRoute.gptDecoder(response)
+        st.write(routeFound)
         sheet.append_row([prompt, response])
     
 st.divider()
