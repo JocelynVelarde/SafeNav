@@ -1,12 +1,17 @@
 import streamlit as st
+import toml
 from streamlit_mic_recorder import speech_to_text
 import gspread
 from google.oauth2.service_account import Credentials
 
+
+config = toml.load('config.toml')
+creds = config['connections.gsheets']
+
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
-creds = Credentials.from_service_account_file('.streamlit\gcloud.json', scopes=scope)
+creds = Credentials.from_service_account_file(creds, scopes=scope)
 
 client = gspread.authorize(creds)
 
