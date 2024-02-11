@@ -2,7 +2,9 @@ import streamlit as st
 from streamlit_mic_recorder import speech_to_text
 from gsheet_auth import gsheet_auth
 from filtering_gpt import ask_gpt
+from algorithms.pathClass import pathfinder
 
+searchRoute = pathfinder()
 client = gsheet_auth()
 sheet = client.open('Streamlit SafeNav').worksheet('Hoja 1')
 
@@ -41,6 +43,7 @@ if st.button("Search Route", use_container_width=True):
         prompt = state.text_received[-1]
         response = ask_gpt(prompt)
         st.write(response)
+        searchRoute.gptDecoder(response)
         sheet.append_row([prompt, response])
     
 st.divider()
