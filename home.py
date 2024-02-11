@@ -4,12 +4,12 @@ import numpy as np
 from streamlit_gsheets import GSheetsConnection
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-df = conn.read()
+df = conn.read(spreadsheet="https://docs.google.com/spreadsheets/d/1APxXH_fy2zPxlyb-PUA-yrk857JGCRK-OWH8ASWZv9I/edit#gid=0")
 st.title("Welcome to SafeNav! 🚀")
 
 st.divider()
 
-for row in df.itertuples():
+for row in df:
     st.write(row)
 
 st.header("🛡️Waze's Safety Upgrade🛡️")
