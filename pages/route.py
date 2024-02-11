@@ -5,7 +5,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 
-config = toml.load('config.toml')
+config = toml.load('.streamlit\secrets.toml')
 creds = config['connections.gsheets']
 
 scope = ['https://spreadsheets.google.com/feeds',
