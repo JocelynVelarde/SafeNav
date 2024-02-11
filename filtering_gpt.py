@@ -1,7 +1,8 @@
 #from api_keys import OPENAI_API_KEY, ASSISTANT_ID
 from openai import OpenAI
-from gsheet_auth import gsheet_auth, OPENAI_API_KEY, ASSISTANT_ID
+from gsheet_auth import gsheet_auth
 import time
+from openai_auth import getOpenAIkey, getAssistant
 
 # Data retrieval from Google Sheets
 auth = gsheet_auth()
@@ -10,13 +11,13 @@ sheet = auth.open('Streamlit SafeNav').worksheet('Hoja 1')
 #print(prompt)
 
 def set_api_key():
-  client = OpenAI(api_key=OPENAI_API_KEY)
+  client = OpenAI(api_key=getOpenAIkey())
   return client
 
 def ask_gpt(prompt):
     try:
         # Assistant initialization
-        myAssist = set_api_key().beta.assistants.retrieve(ASSISTANT_ID)
+        myAssist = set_api_key().beta.assistants.retrieve(getAssistant())
         assistant_id = myAssist.id
         print("Assistant initialized")
 

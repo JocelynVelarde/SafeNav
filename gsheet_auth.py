@@ -25,7 +25,3 @@ def gsheet_auth():
     return client
 
 
-def openai_auth():
-    OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"],
-    ASSISTANT_ID = st.secrets["ASSISTANT_ID"]
-    return OPENAI_API_KEY, ASSISTANT_ID
