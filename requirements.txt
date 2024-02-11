@@ -2,3 +2,4 @@ streamlit-mic-recorder
 st-gsheets-connection
 gspread
 google-auth
+openai
