@@ -117,3 +117,23 @@ class pathfinder:
 
         return self.printweight(dist, target), self.getShortestPath(dist, prev, target)
 
+    def gptDecoder(self, gptout):
+        try:
+            start_node, end_node = gptout["start_node"], gptout["end_node"]
+            weight, path = self.dijkstra(start_node, end_node)
+            return weight, path
+        except KeyError as k:
+            print("GPT JSON didnt find the key", k)
+        except Exception as e:
+            print("Error in gptDecoder", e)
+
+
+"""
+#Example of how to implement code in main
+
+test = pathfinder()
+
+a = {"start_node": 68, "end_node": 10}
+test.gptDecoder(a)
+"""
+
