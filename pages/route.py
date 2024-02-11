@@ -1,6 +1,5 @@
 import streamlit as st
 from streamlit_mic_recorder import speech_to_text
-from google.oauth2.service_account import Credentials
 from gsheet_auth import gsheet_auth
 from filtering_gpt import ask_gpt
 
@@ -16,7 +15,7 @@ st.title("Search or speak your desired route 🗺️")
 
 st.divider()
 
-st.text_input(
+typed_route = st.text_input(
     label= "Type your desired route 👇",
     placeholder="I want to go from Churubusco tu Coapa but i do not know how",
 )
@@ -32,11 +31,17 @@ if text:
 
             
 if st.button("Search Route", use_container_width=True):
-    st.info("Calculating the safest route... 🚗🔍")
-    prompt = state.text_received[-1]
-    response = ask_gpt(prompt)
-    st.write(response)
-    sheet.append_row([prompt, response])
+    if typed_route:
+        st.info("Calculating the safest route... 🚗🔍")
+        response = ask_gpt(typed_route)
+        st.write(response)
+        sheet.append_row([typed_route, response])  
+    else:
+        st.info("Calculating the safest route... 🚗🔍")
+        prompt = state.text_received[-1]
+        response = ask_gpt(prompt)
+        st.write(response)
+        sheet.append_row([prompt, response])
     
 st.divider()
 
