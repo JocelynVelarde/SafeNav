@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_mic_recorder import speech_to_text
-from gsheet_auth import gsheet_auth
-from filtering_gpt import ask_gpt
+from api.gsheet_auth import gsheet_auth
+from api.filtering_gpt import ask_gpt
 from algorithms.pathClass import pathfinder
 
 searchRoute = pathfinder()
