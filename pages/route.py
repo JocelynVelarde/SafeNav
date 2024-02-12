@@ -37,6 +37,8 @@ if st.button("Search Route", use_container_width=True):
         st.info("Calculating the safest route... 🚗🔍")
         response = ask_gpt(typed_route)
         st.write(response)
+        routeFound = searchRoute.gptDecoder(response)
+        st.write(routeFound)
         sheet.append_row([typed_route, response])  
     else:
         st.info("Calculating the safest route... 🚗🔍")
