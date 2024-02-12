@@ -141,12 +141,11 @@ class pathfinder:
         except Exception as e:
             print("Error in gptDecoder", e)
 
-
+"""
 #Example of how to implement code in main
 
 test = pathfinder()
-print(test.sector_names)
 #a = {"start_node": 68, "end_node": 10}
 #test.gptDecoder(a)
-
+"""
 
