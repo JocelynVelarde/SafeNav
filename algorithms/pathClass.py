@@ -1,4 +1,5 @@
 import sys
+import json
 
 
 class pathfinder:
@@ -119,6 +120,8 @@ class pathfinder:
 
     def gptDecoder(self, gptout):
         try:
+            if isinstance(gptout, str):
+                gptout = json.loads(gptout)
             start_node, end_node = gptout["start_node"], gptout["end_node"]
             weight, path = self.dijkstra(start_node, end_node)
             return weight, path
