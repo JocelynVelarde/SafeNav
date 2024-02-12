@@ -1,6 +1,6 @@
 import sys
 import json
-
+import numpy as np
 
 class pathfinder:
 
@@ -16,6 +16,12 @@ class pathfinder:
             lines = f.read().splitlines()
             for line in lines:
                 emptyGraph.append(list(map(int, line.split(','))))
+
+        self.sector_names = np.loadtxt('assets/files/sector_names.csv', delimiter=",", dtype=str)
+
+        #Remove empty data in csv
+        self.sector_names = np.delete(self.sector_names, 0, 0)
+
 
         self.graph = emptyGraph
 
@@ -124,19 +130,23 @@ class pathfinder:
                 gptout = json.loads(gptout)
             start_node, end_node = gptout["start_node"], gptout["end_node"]
             weight, path = self.dijkstra(start_node, end_node)
-            return weight, path
+            named_path = []
+            for node in path:
+                named_path.append(self.sector_names[node, 1])
+                named_path.append("-->")
+            return named_path[:-1]
+
         except KeyError as k:
             print("GPT JSON didnt find the key", k)
         except Exception as e:
             print("Error in gptDecoder", e)
 
 
-"""
 #Example of how to implement code in main
 
 test = pathfinder()
+print(test.sector_names)
+#a = {"start_node": 68, "end_node": 10}
+#test.gptDecoder(a)
 
-a = {"start_node": 68, "end_node": 10}
-test.gptDecoder(a)
-"""
 
