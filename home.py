@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import geopandas as gpd
-from shapely import wkt
+
 st.title("Welcome to SafeNav! 🚀")
 st.divider()
 
