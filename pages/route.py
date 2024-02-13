@@ -16,6 +16,8 @@ if 'text_received' not in state:
 st.title("Search or speak your desired route 🗺️")
 
 st.divider()
+st.write("Remember to only search or ask for entities in Mexico City, such as: ")
+st.write("Churubusco, Coapa, Tacuba, Moctezuma, La Noria, Dinamo, etc.")
 
 typed_route = st.text_input(
     label= "Type your desired route 👇",
