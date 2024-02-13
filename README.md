@@ -52,9 +52,10 @@ streamlit_app
 - Google Sheets API
 
 Deployed with: Streamlit Cloud
-## Documentation
 
-[DevPost](https://devpost.com/software/test-z8sixj?ref_content=user-portfolio&ref_feature=in_progress)
+## Demo
+
+[YouTube](https://www.youtube.com/watch?v=poZN7ochd2Y&t=22s)
 
 
 ## License
