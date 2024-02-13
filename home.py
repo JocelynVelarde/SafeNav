@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import geopandas as gpd
 
 st.title("Welcome to SafeNav! 🚀")
 st.divider()
@@ -12,13 +13,20 @@ st.write("Then, SafeNav is the answer for you! Just easily type or speak your de
 
 st.subheader(":blue[It is this easy to view your route on an interactive map with understandable instructions.]")
 
+gdf = gpd.read_file('assets/files/polygons.csv')
+
+container = st.container(border=True)
+
+container.map(gdf)
+
+"""
 df = pd.DataFrame(
     np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
     columns=['lat', 'lon'])
 
 container = st.container(border=True)
 container.map(df)
-
+"""
 
 st.divider()
 
