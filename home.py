@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import geopandas as gpd
-
+from shapely import wkt
 st.title("Welcome to SafeNav! 🚀")
 st.divider()
 
@@ -13,13 +13,22 @@ st.write("Then, SafeNav is the answer for you! Just easily type or speak your de
 
 st.subheader(":blue[It is this easy to view your route on an interactive map with understandable instructions.]")
 
-gdf = gpd.read_file('assets/files/polygons.csv')
-
+df_map = pd.read_csv("assets/files/polygons.csv")
+df_map['geometry'] = df_map['geometry'].apply(wkt.loads)
+gdf = gpd.GeoDataFrame(df_map, crs='epsg:6362')
 container = st.container(border=True)
 
 container.map(gdf)
 
 """
+
+#failed iterations of maps
+gdf = gpd.read_file('assets/files/polygons.csv')
+
+container = st.container(border=True)
+
+container.map(gdf)
+#default
 df = pd.DataFrame(
     np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
     columns=['lat', 'lon'])
